@@ -13,4 +13,12 @@ match priority:
         reminder += ". (Unknown priority level provided.)"
 if time_bound == "yes":
     reminder += ". It is time-bound and requires immediate attention!"
-print("Reminder")
+print(
+    f"Reminder: Your task '{task}' has a {priority} priority. "
+    + (("This is very important." if priority == "high" else
+        "You should work on this soon." if priority == "medium" else
+        "Do this whenever you have free time." if priority == "low" else
+        "(Unknown priority level provided.)")
+      )
+    + (" It is time-bound and requires immediate attention today!" if time_bound == "yes" else "")
+)
