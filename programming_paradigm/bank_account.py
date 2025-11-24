@@ -29,4 +29,4 @@ if __name__ == "__main__":
     account.display_balance()  # Output: Current Balance: 80
     success = account.withdraw(100)
     print("Withdrawal successful:", success)  # Output: Withdrawal successful: False
-    account.display_balance()  # Output: Current Balance: $250.00  
+    account.display_balance()  # Output: Current Balance: 250.00  
