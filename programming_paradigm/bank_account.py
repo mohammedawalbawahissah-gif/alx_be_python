@@ -1,32 +1,28 @@
-class BankAccount:
-    def __init__(self, initial_balance=0):
-        """Initialize the bank account with an optional initial balance."""
-        self.__account_balance = initial_balance  # Encapsulated attribute
+import sys
+from bank_account import BankAccount
 
-    def deposit(self, amount):
-        """Add money to the account."""
-        if amount > 0:
-            self.__account_balance += amount
+def main():
+    account = BankAccount(100)  # Example starting balance
+    if len(sys.argv) < 2:
+        print("Usage: python main.py <command>:<amount>")
+        print("Commands: deposit, withdraw, display")
+        sys.exit(1)
 
-    def withdraw(self, amount):
-        """Withdraw money if balance is sufficient."""
-        if 0 < amount <= self.__account_balance:
-            self.__account_balance -= amount
-            return True
-        return False
+    command, *params = sys.argv[1].split(':')
+    amount = float(params[0]) if params else None
 
-    def display_balance(self):
-        """Print the current account balance."""
-        print("Current Balance:", self.__account_balance)
-# Example usage:
+    if command == "deposit" and amount is not None:
+        account.deposit(amount)
+        print(f"Deposited: ${amount}")
+    elif command == "withdraw" and amount is not None:
+        if account.withdraw(amount):
+            print(f"Withdrew: ${amount}")
+        else:
+            print("Insufficient funds.")
+    elif command == "display":
+        account.display_balance()
+    else:
+        print("Invalid command.")
+
 if __name__ == "__main__":
-    account = BankAccount(250)
-    account.display_balance()  # Output: Current Balance: 100
-    account.deposit(50)
-    account.display_balance()  # Output: Current Balance: 150
-    success = account.withdraw(70)
-    print("Withdrawal successful:", success)  # Output: Withdrawal successful: True
-    account.display_balance()  # Output: Current Balance: 80
-    success = account.withdraw(100)
-    print("Withdrawal successful:", success)  # Output: Withdrawal successful: False
-    account.display_balance()  # Output: Current Balance: $250
+    main()
