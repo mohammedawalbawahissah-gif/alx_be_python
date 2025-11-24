@@ -20,7 +20,7 @@ class BankAccount:
         print("Current Balance:", self.__account_balance)
 # Example usage:
 if __name__ == "__main__":
-    account = BankAccount(100)
+    account = BankAccount(250)
     account.display_balance()  # Output: Current Balance: 100
     account.deposit(50)
     account.display_balance()  # Output: Current Balance: 150
