@@ -18,3 +18,15 @@ class BankAccount:
     def display_balance(self):
         """Print the current account balance."""
         print("Current Balance:", self.__account_balance)
+# Example usage:
+if __name__ == "__main__":
+    account = BankAccount(100)
+    account.display_balance()  # Output: Current Balance: 100
+    account.deposit(50)
+    account.display_balance()  # Output: Current Balance: 150
+    success = account.withdraw(20)
+    print("Withdrawal successful:", success)  # Output: Withdrawal successful: True
+    account.display_balance()  # Output: Current Balance: 130
+    success = account.withdraw(150)
+    print("Insufficient funds:", success)  # Output: Withdrawal successful: False
+    account.display_balance()  # Output: Current Balance: 130
